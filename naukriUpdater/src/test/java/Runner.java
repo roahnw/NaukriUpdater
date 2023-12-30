@@ -1,13 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
-import org.apache.commons.lang3.time.DurationUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.testng.annotations.Test;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -69,7 +67,8 @@ public class Runner {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void run() {
         Runner runner = new Runner();
         String username = System.getenv("username");
         String password = System.getenv("password");
