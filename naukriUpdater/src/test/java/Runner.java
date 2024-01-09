@@ -36,6 +36,7 @@ public class Runner {
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@id='usernameField']")))).sendKeys(username);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@id='passwordField']")))).sendKeys(password);
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[@type='submit' and text()='Login']")))).click();
+        System.out.println("Login successful");
     }
 
     private void updateProfile() {
@@ -51,12 +52,14 @@ public class Runner {
 
             WebElement name = wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//input[@id='name']"))));
             String getName = name.getAttribute("value");
-
+            System.out.println("Name before update: "+getName);
             String updateName = getName.equals("Rohan Waghmare") ? "Rohan R Waghmare" : "Rohan Waghmare";
             name.click();
             Thread.sleep(5000);
             name.clear();
             name.sendKeys(updateName);
+            Thread.sleep(2000);
+            System.out.println("Updated Name: "+name.getAttribute("value"));
             wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//button[@type='button' and text()='Save']")))).click();
             System.out.println("Profile Updated at "+ LocalDate.now() +" "+ LocalTime.now());
         }catch (Exception e) {
